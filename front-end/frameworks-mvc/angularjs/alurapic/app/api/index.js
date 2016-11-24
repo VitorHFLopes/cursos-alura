@@ -1,6 +1,6 @@
 var db = require('../../config/database');
 
-var api = {}
+var api = {};
 
 api.adiciona = function(req, res) {
     
@@ -38,7 +38,7 @@ api.lista = function(req, res) {
 
 api.listaPorGrupo = function(req, res) {
     var grupoId = parseInt(req.params.grupoId);
-    db.find({grupo: grupoId}, function(err, doc) {
+    db.find({group: grupoId}, function(err, doc) {
         if (err) return console.log(err);
         res.json(doc);
     });
@@ -60,15 +60,15 @@ api.listaGrupos = function(req, res) {
     res.json([
         {
             _id: 1, 
-            nome: 'esporte'
+            name: 'esporte'
         }, 
         { 
             _id: 2, 
-            nome: 'lugares', 
+            name: 'lugares'
         }, 
         { 
             _id: 3, 
-            nome: 'animais'
+            name: 'animais'
         }
     ]);
         

@@ -1,11 +1,24 @@
 angular.module('alurapic')
 
-    .controller('PicturesCtrl', function ($scope) {
+    .controller('PicturesCtrl', function ($http, $scope) {
 
-        $scope.picture = {
-            url: 'http://vignette1.wikia.nocookie.net/leagueoflegends/images/1/12/League_of_Legends_Icon.png/revision/latest?cb=20150402234343',
-            title: 'lol-logo'
-        };
+        $scope.pictures = [];
+
+        var promise = $http.get('v1/fotos');
+
+        //Angular $http natural response
+        promise.then(function (response) {
+            $scope.pictures = response.data;
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+        //Angular $http shortcut if you don't wanna ".data" in response
+        // promise.success(function (response) {
+        //     $scope.pictures = response;
+        // }).error(function (error) {
+        //     console.log(error);
+        // });
 
     })
 

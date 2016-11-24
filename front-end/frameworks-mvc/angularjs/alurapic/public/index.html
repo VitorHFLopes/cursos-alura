@@ -11,9 +11,26 @@
         <script src="js/controllers/PicturesCtrl.js"></script>
     </head>
     <body data-ng-controller="PicturesCtrl">
+
+        <!--container-->
         <div class="container">
-            <h1 class="text-center">Alurapic</h1>
-            <img class="img-responsive center-block" src="{{picture.url}}" alt="{{picture.title}}">
-        </div> <!-- fim container -->        
+
+            <div class="jumbotron">
+                <h1 class="text-center">Alurapic</h1>
+            </div>
+
+            <!--panel-->
+            <div class="panel panel-default" data-ng-repeat="picture in pictures">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{picture.title}}</h3>
+                </div>
+                <div class="panel-body">
+                    <img class="img-responsive center-block" src="{{picture.url}}" alt="{{picture.title}}">
+                </div>
+            </div>
+            <!--end panel-->
+
+        </div>
+        <!-- end container -->
     </body>
 </html>
