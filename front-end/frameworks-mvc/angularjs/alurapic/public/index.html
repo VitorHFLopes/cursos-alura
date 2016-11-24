@@ -7,7 +7,10 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <script src="js/lib/angular.min.js"></script>
+        <!--Modules-->
         <script src="js/main.js"></script>
+        <script src="js/directives/MyDirectives.js"></script>
+        <!--Directives-->
         <script src="js/controllers/PicturesCtrl.js"></script>
     </head>
     <body data-ng-controller="PicturesCtrl">
@@ -20,14 +23,9 @@
             </div>
 
             <!--panel-->
-            <div class="panel panel-default" data-ng-repeat="picture in pictures">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{picture.title}}</h3>
-                </div>
-                <div class="panel-body">
-                    <img class="img-responsive center-block" src="{{picture.url}}" alt="{{picture.title}}">
-                </div>
-            </div>
+            <my-panel data-ng-repeat="picture in pictures" title="{{picture.title}}">
+                <img class="img-responsive center-block" src="{{picture.url}}" alt="{{picture.title}}">
+            </my-panel>
             <!--end panel-->
 
         </div>
