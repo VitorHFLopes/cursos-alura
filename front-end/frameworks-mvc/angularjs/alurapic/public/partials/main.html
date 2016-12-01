@@ -1,0 +1,20 @@
+<div class="jumbotron">
+    <h1 class="text-center">Alurapic</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <form>
+            <input type="text" class="form-control" placeholder="filter" data-ng-model="filter" data-ng-model-options="{debounce: 500}">
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <!--panel-->
+    <my-panel class="col-md-2 animated-panel" data-ng-repeat="picture in pictures | filter:filter" title="{{picture.title}}">
+        <!--<img class="img-responsive center-block" src="{{picture.url}}" alt="{{picture.title}}">-->
+        <my-picture url="{{picture.url}}" title="{{picture.title}}"></my-picture>
+    </my-panel>
+    <!--end panel-->
+</div>

@@ -32,4 +32,19 @@ angular.module('MyDirectives', [])
         return ddo;
     })
 
+    .directive('myPicture', function () {
+        var ddo = {};
+        ddo.restrict = 'AE';
+        ddo.scope = {
+            url : '@',
+            title: '@'
+        };
+
+        ddo.transclude = true;
+
+        ddo.template = '<img class="img-responsive center-block" src="{{url}}" alt="{{title}}">';
+
+        return ddo;
+    })
+
 ;
