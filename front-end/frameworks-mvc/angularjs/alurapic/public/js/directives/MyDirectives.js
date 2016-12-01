@@ -1,6 +1,6 @@
 angular.module('MyDirectives', [])
 
-    //Use camel case for naming directives because this is an angular best (mandatory) practice
+    //Use camelCase for naming directives because this is an angular best (mandatory) practice
     //cause in view angular gonna use this name separated by '-'
     .directive('myPanel', function () {
         //Direct Definition Object

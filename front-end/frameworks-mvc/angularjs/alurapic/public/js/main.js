@@ -1,1 +1,1 @@
-angular.module('alurapic', ['MyDirectives']);
+angular.module('alurapic', ['MyDirectives', 'ngAnimate']);

@@ -3,6 +3,7 @@ angular.module('alurapic')
     .controller('PicturesCtrl', function ($http, $scope) {
 
         $scope.pictures = [];
+        $scope.filter = '';
 
         var promise = $http.get('v1/fotos');
 

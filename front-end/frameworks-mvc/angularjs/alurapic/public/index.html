@@ -6,7 +6,9 @@
         <title>Alurapic</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/effects.css">
         <script src="js/lib/angular.min.js"></script>
+        <script src="js/lib/angular-animate.min.js"></script>
         <!--Modules-->
         <script src="js/main.js"></script>
         <script src="js/directives/MyDirectives.js"></script>
@@ -22,11 +24,21 @@
                 <h1 class="text-center">Alurapic</h1>
             </div>
 
-            <!--panel-->
-            <my-panel data-ng-repeat="picture in pictures" title="{{picture.title}}">
-                <img class="img-responsive center-block" src="{{picture.url}}" alt="{{picture.title}}">
-            </my-panel>
-            <!--end panel-->
+            <div class="row">
+                <div class="col-md-12">
+                    <form>
+                        <input type="text" class="form-control" placeholder="filter" data-ng-model="filter" data-ng-model-options="{debounce: 500}">
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <!--panel-->
+                <my-panel class="col-md-2 animated-panel" data-ng-repeat="picture in pictures | filter:filter" title="{{picture.title}}">
+                    <img class="img-responsive center-block" src="{{picture.url}}" alt="{{picture.title}}">
+                </my-panel>
+                <!--end panel-->
+            </div>
 
         </div>
         <!-- end container -->
