@@ -31,6 +31,16 @@ angular.module('alurapic')
 
         };
 
+        $scope.delete = function (picture) {
+            $http.({
+                method: 'DELETE',
+                data: picture,
+                url: 'v1/fotos/' + picture._id
+            }).success(function () {
+                console.log()
+            })
+        };
+
     })
 
 ;

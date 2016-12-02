@@ -46,11 +46,3 @@
 </form>
 
 <!--Angular form validator uses formName.inputName.$validation.whatIsTheError-->
-
-<form name="calopsita">
-    <input name="nome" ng-model="passaro.nome" required ng-maxlength="20">
-    <!-- mensagem de erro obrigatório aqui -->
-    <span ng-show="calopsita.nome.$error.required">Campo obrigatório</span>
-    <!-- mensagem de erro tamanho aqui -->
-    <span ng-show="calopsita.nome.$error.maxlength">Deve conter somente 20 caracteres</span>
-</form>
