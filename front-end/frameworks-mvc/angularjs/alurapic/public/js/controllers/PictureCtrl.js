@@ -1,6 +1,6 @@
 angular.module('alurapic')
 
-    .controller('PictureCtrl', function ($scope, $http, $routeParams, pictureResource) {
+    .controller('PictureCtrl', function ($scope, $http, $routeParams, pictureRegister, pictureResource) {
 
         $scope.picture = {
             url: '',
@@ -37,7 +37,19 @@ angular.module('alurapic')
         $scope.submit = function () {
             if($scope.form.$valid) {
 
-                //resource implementation
+                //service implementation
+                pictureRegister.register($scope.picture)
+                    .then(function (response) {
+                        $scope.message = response.message;
+                        if(response.include) {
+                            $scope.picture = {};
+                        }
+                    })
+                    .catch(function (response) {
+                        $scope.message = response.message;
+                    });
+
+                /*//resource implementation
                 if($scope.picture._id) {
                     pictureResource.update({
                         pictureId: $scope.picture._id
@@ -59,7 +71,7 @@ angular.module('alurapic')
                         console.log(error);
                         $scope.message = 'Can\'t register this picture';
                     })
-                }
+                }*/
 
                 //http implementation
                 /*if($scope.picture._id) {
