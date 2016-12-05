@@ -47,4 +47,15 @@ angular.module('MyDirectives', [])
         return ddo;
     })
 
+    .directive('myDangerButton', function () {
+        var ddo = {};
+        ddo.restrict = 'E';
+        ddo.scope = {
+            action: '&', //expression
+            name: '@' //string
+        };
+        ddo.template = '<button class="btn btn-danger btn-block" data-ng-click="action()">{{name}}</button>';
+        return ddo;
+    })
+
 ;

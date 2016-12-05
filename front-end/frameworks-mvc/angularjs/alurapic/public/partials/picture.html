@@ -32,6 +32,19 @@
             <textarea name="description" class="form-control" data-ng-model="picture.description"></textarea>
         </div>
 
+        <div class="form-group">
+            <label>Group</label>
+            <select name="group" class="form-control" required
+                data-ng-controller="GroupsCtrl"
+                data-ng-model="picture.group"
+                data-ng-options="group._id as (group.name | uppercase) for group in groups"> <!--VALUE as LABEL for ITEM in ARRAY-->
+                <option value="">Select a group</option>
+            </select>
+            <span class="form-control alert-danger" data-ng-show="(form.$submitted) && (form.group.$error.required)">
+                Group is required
+            </span>
+        </div>
+
         <button class="btn btn-primary" type="submit" data-ng-disabled="form.$invalid">Save</button>
 
         <a href="/" class="btn btn-primary">Back</a>
