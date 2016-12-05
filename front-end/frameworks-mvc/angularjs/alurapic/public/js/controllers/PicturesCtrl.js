@@ -4,6 +4,7 @@ angular.module('alurapic')
 
         $scope.pictures = [];
         $scope.filter = '';
+        $scope.message = '';
 
         var promise = $http.get('v1/fotos');
 
@@ -20,6 +21,22 @@ angular.module('alurapic')
         // }).error(function (error) {
         //     console.log(error);
         // });
+
+        $scope.delete = function (picture) {
+            $http({
+                method: 'DELETE',
+                data: picture,
+                url: 'v1/fotos/' + picture._id
+            }).success(function () {
+                var pictureIndex = $scope.pictures.indexOf(picture);
+                $scope.pictures.splice(pictureIndex, 1);
+                $scope.message = 'Picture ' + picture.title + ' was remove successful';
+            }).error(function (error) {
+                console.log(error);
+                $scope.message = 'Can\'t remove the picture ' + picture.title;
+
+            })
+        };
 
     })
 

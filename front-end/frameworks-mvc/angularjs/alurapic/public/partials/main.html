@@ -2,6 +2,8 @@
     <h1 class="text-center">Alurapic</h1>
 </div>
 
+<p class="alert alert-info" data-ng-if="message.length">{{message}}</p>
+
 <div class="row">
     <div class="col-md-12">
         <form>
@@ -23,7 +25,7 @@
     <!--panel-->
     <my-panel class="col-md-2 animated-panel" data-ng-repeat="picture in pictures | filter:filter" title="{{picture.title}}">
         <my-picture url="{{picture.url}}" title="{{picture.title}}"></my-picture>
-        <a href="" class="btn btn-primary btn-block">Edit</a>
+        <a href="/pictures/edit/{{picture._id}}" class="btn btn-primary btn-block">Edit</a>
         <button class="btn btn-danger btn-block" data-ng-click="delete(picture)">Delete</button>
     </my-panel>
     <!--end panel-->

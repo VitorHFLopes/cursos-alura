@@ -14,6 +14,11 @@ angular.module('alurapic', ['MyDirectives', 'ngAnimate', 'ngRoute'])
             controller: 'PictureCtrl'
         });
 
+        $routeProvider.when('/pictures/edit/:pictureId', {
+            templateUrl: 'partials/picture.html',
+            controller: 'PictureCtrl'
+        });
+
         $routeProvider.otherwise('/pictures');
         
     })
