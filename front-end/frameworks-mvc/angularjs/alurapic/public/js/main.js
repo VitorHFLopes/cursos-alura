@@ -1,4 +1,9 @@
-angular.module('alurapic', ['MyDirectives', 'ngAnimate', 'ngRoute'])
+angular.module('alurapic', [
+    'MyDirectives',
+    'MyServices',
+    'ngAnimate',
+    'ngRoute'
+])
 
     .config(function ($routeProvider, $locationProvider) {
 

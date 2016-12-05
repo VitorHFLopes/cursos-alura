@@ -1,11 +1,33 @@
 angular.module('alurapic')
 
-    .controller('PicturesCtrl', function ($http, $scope) {
+    .controller('PicturesCtrl', function ($http, $scope, pictureResource) {
 
         $scope.pictures = [];
         $scope.filter = '';
         $scope.message = '';
 
+        //resource implementation
+
+        pictureResource.query(function (pictures) {
+            $scope.pictures = pictures;
+        }, function (error) {
+            console.log(error);
+        });
+
+        $scope.delete = function (picture) {
+            pictureResource.delete({
+                pictureId: picture._id
+            }, function () {
+                var pictureIndex = $scope.pictures.indexOf(picture);
+                $scope.pictures.splice(pictureIndex, 1);
+                $scope.message = 'Picture ' + picture.title + ' was remove successful';
+            }, function (error) {
+                console.log(error);
+                $scope.message = 'Can\'t remove the picture ' + picture.title;
+            })
+        };
+
+        /*//http implementation
         var promise = $http.get('v1/fotos');
 
         //Angular $http natural response
@@ -36,7 +58,7 @@ angular.module('alurapic')
                 $scope.message = 'Can\'t remove the picture ' + picture.title;
 
             })
-        };
+        };*/
 
     })
 
