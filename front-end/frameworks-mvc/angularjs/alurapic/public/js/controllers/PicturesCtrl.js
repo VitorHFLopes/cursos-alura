@@ -6,8 +6,7 @@ angular.module('alurapic')
         $scope.filter = '';
         $scope.message = '';
 
-        //resource implementation
-
+        /**RESOURCE IMPLEMENTATION*/
         pictureResource.query(function (pictures) {
             $scope.pictures = pictures;
         }, function (error) {
@@ -27,8 +26,8 @@ angular.module('alurapic')
             })
         };
 
-        /*//http implementation
-        var promise = $http.get('v1/fotos');
+        /**HTTP IMPLEMENTATION*/
+        /*var promise = $http.get('v1/fotos');
 
         //Angular $http natural response
         promise.then(function (response) {

@@ -1,6 +1,8 @@
 angular.module('alurapic')
 
-    .controller('PictureCtrl', function ($scope, $http, $routeParams, pictureRegister, pictureResource) {
+    //this "injections" before the function declaration of a controller is a solution to block the minify process
+    //the convert the name of the injections, cause angular uses the NAME for injecting
+    .controller('PictureCtrl', ['$scope', '$http', '$routeParams', 'pictureRegister', 'pictureResource', function ($scope, $http, $routeParams, pictureRegister, pictureResource) {
 
         $scope.picture = {
             url: '',
@@ -12,7 +14,7 @@ angular.module('alurapic')
 
         if($routeParams.pictureId) {
 
-            //resource implementation
+            /**RESOURCE IMPLEMENTATION*/
             pictureResource.get({
                 pictureId: $routeParams.pictureId
             }, function (picture) {
@@ -22,7 +24,7 @@ angular.module('alurapic')
                 $scope.message = 'Can\'t find the picture';
             });
 
-            //http implementation
+            /**HTTP IMPLEMENTATION*/
             /*$http({
                 method: 'GET',
                 url:'v1/fotos/' + $routeParams.pictureId
@@ -37,7 +39,7 @@ angular.module('alurapic')
         $scope.submit = function () {
             if($scope.form.$valid) {
 
-                //service implementation
+                /**SERVICE IMPLEMENTATION*/
                 pictureRegister.register($scope.picture)
                     .then(function (response) {
                         $scope.message = response.message;
@@ -49,8 +51,8 @@ angular.module('alurapic')
                         $scope.message = response.message;
                     });
 
-                /*//resource implementation
-                if($scope.picture._id) {
+                /**RESOURCE IMPLEMENTATION*/
+                /*if($scope.picture._id) {
                     pictureResource.update({
                         pictureId: $scope.picture._id
                     }, $scope.picture, function () {
@@ -73,7 +75,7 @@ angular.module('alurapic')
                     })
                 }*/
 
-                //http implementation
+                /**HTTP IMPLEMENTATION*/
                 /*if($scope.picture._id) {
                     $http({
                         method: 'PUT',
@@ -104,6 +106,6 @@ angular.module('alurapic')
             }
         };
 
-    })
+    }])
 
 ;

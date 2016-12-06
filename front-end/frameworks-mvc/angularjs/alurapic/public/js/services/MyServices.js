@@ -8,9 +8,10 @@ angular.module('MyServices', ['ngResource'])
         });
     })
 
-    .factory('pictureRegister', function (pictureResource, $q) {
+    .factory('pictureRegister', function (pictureResource, $q, $rootScope) {
 
         var service = {};
+        var event = 'registeredPicture';
 
         service.register = function (picture) {
             return $q(function (resolve, reject) {
@@ -29,6 +30,7 @@ angular.module('MyServices', ['ngResource'])
 
                         //success function
                         function () {
+                            $rootScope.$broadcast(event);
                             resolve({
                                 message: 'Picture ' + picture.title + ' was update successful!',
                                 include: false
@@ -52,6 +54,7 @@ angular.module('MyServices', ['ngResource'])
 
                         //success function
                         function () {
+                            $rootScope.$broadcast(event);
                             resolve({
                                 message: 'Picture ' + picture.title + ' was registered successful!',
                                 include: true
