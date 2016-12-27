@@ -1,1 +1,61 @@
-<h1>Register picture</h1>
+<div class="page-header text-center">
+    <h1>{{picture.title}}</h1>
+</div>
+
+<p data-ng-show="message.length" class="alert alert-info">{{message}}</p>
+
+<form novalidate name="form" class="row" data-ng-submit="submit()">
+
+    <div class="col-md-6">
+
+        <div class="form-group">
+            <label>Title</label>
+            <input name="title" class="form-control" type="text" data-ng-model="picture.title" required data-ng-maxlength="20">
+            <span class="form-control alert-danger" data-ng-show="(form.$submitted) && (form.title.$error.required)">
+                Title is required
+            </span>
+            <span class="form-control alert-danger" data-ng-show="(form.$submitted) && (form.title.$error.maxlength)">
+                Title supports just 20 characters
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label>URL</label>
+            <input name="url" class="form-control" type="text" data-ng-model="picture.url" required>
+            <span class="form-control alert-danger" data-ng-show="(form.$submitted) && (form.url.$error.required)">
+                URL is required
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <textarea name="description" class="form-control" data-ng-model="picture.description"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Group</label>
+            <select name="group" class="form-control" required
+                data-ng-controller="GroupsCtrl"
+                data-ng-model="picture.group"
+                data-ng-options="group._id as (group.name | uppercase) for group in groups"> <!--VALUE as LABEL for ITEM in ARRAY-->
+                <option value="">Select a group</option>
+            </select>
+            <span class="form-control alert-danger" data-ng-show="(form.$submitted) && (form.group.$error.required)">
+                Group is required
+            </span>
+        </div>
+
+        <button class="btn btn-primary" type="submit" data-ng-disabled="form.$invalid">Save</button>
+
+        <a href="/" class="btn btn-primary" my-focus>Back</a>
+        <hr>
+
+    </div>
+
+    <div class="col-md-6">
+        <my-picture url="{{picture.url}}" title="{{picture.title}}"></my-picture>
+    </div>
+
+</form>
+
+<!--Angular form validator uses formName.inputName.$validation.whatIsTheError-->

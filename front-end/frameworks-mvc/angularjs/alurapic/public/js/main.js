@@ -1,4 +1,9 @@
-angular.module('alurapic', ['MyDirectives', 'ngAnimate', 'ngRoute'])
+angular.module('alurapic', [
+    'MyDirectives',
+    'MyServices',
+    'ngAnimate',
+    'ngRoute'
+])
 
     .config(function ($routeProvider, $locationProvider) {
 
@@ -10,7 +15,13 @@ angular.module('alurapic', ['MyDirectives', 'ngAnimate', 'ngRoute'])
         });
 
         $routeProvider.when('/pictures/add', {
-            templateUrl: 'partials/picture.html'
+            templateUrl: 'partials/picture.html',
+            controller: 'PictureCtrl'
+        });
+
+        $routeProvider.when('/pictures/edit/:pictureId', {
+            templateUrl: 'partials/picture.html',
+            controller: 'PictureCtrl'
         });
 
         $routeProvider.otherwise('/pictures');
