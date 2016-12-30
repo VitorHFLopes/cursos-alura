@@ -38,3 +38,7 @@ jspm_packages
 
 # Custom
 .idea/
+
+# MAC
+.DS_Store
+front-end/.DS_Store
