@@ -3,7 +3,19 @@
     <ion-content>
         <div class="card">
             <div class="item item-divider">Carro</div>
-            <div class="item item-text-wrap">{{car.name}}</div>
+            <div class="item item-text-wrap">{{car.name}}
+                <ul class="list">
+                    <li class="item item-toggle" data-ng-repeat="accessory in accessoryList">
+                        {{accessory.name}} - R{{accessory.price | currency}}
+                        <label class="toggle toggle-assertive">
+                            <input type="checkbox" data-ng-click="change(accessory, isChecked)" data-ng-model="isChecked">
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </li>
+                </ul>
+            </div>
             <div class="item item-divider">R{{car.price | currency}}</div>
         </div>
     </ion-content>
