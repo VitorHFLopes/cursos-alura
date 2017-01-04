@@ -18,5 +18,11 @@ angular.module('starter')
                 controller: 'ChosenCarCtrl'
             })
 
+            .state('checkout', {
+                url: '/checkout/:car',
+                templateUrl: 'templates/checkout.html',
+                controller: 'CheckoutCtrl'
+            })
+
     })
 ;

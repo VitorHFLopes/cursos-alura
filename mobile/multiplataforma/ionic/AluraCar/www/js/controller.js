@@ -39,4 +39,19 @@ angular.module('starter')
 
     })
 
+    .controller('CheckoutCtrl', function ($ionicPopup, $scope, $state, $stateParams) {
+
+        $scope.finishedCar = angular.fromJson($stateParams.car);
+
+        $scope.checkout = function () {
+            $ionicPopup.alert({
+                title: 'Congratulations',
+                template: 'You\'ve just bought a car!'
+            }).then(function () {
+                $state.go('list');
+            })
+        };
+
+    })
+
 ;
