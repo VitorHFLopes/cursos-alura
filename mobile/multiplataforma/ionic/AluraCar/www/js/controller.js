@@ -1,19 +1,39 @@
 angular.module('starter')
 
-    .controller('ListCtrl', function ($scope) {
+    .controller('LoginCtrl', function ($ionicPopup, $scope, $state, CarService) {
 
-        $scope.carsList = [
-            {name: 'BMW 120i', price: 100000},
-            {name: 'ONIX 1.0', price: 20000},
-            {name: 'FIESTA 1.0', price: 30000},
-            {name: 'C3 1.0', price: 80000},
-            {name: 'UNO FIRE', price: 10000},
-            {name: 'SENTRA 2.0', price: 40000},
-            {name: 'ASTRA SEDAN', price: 20000},
-            {name: 'VECTRA 2.0 TURBO', price: 30000},
-            {name: 'HILUX 4X4', price: 200000},
-            {name: 'MONTANA', price: 30000}
-        ];
+        $scope.login = {
+            email: 'joao@alura.com.br',
+            password: 'alura123'
+        };
+
+        $scope.doLogin = function () {
+            var login = {
+                params: {
+                    email: $scope.login.email,
+                    senha: $scope.login.password
+                }
+            };
+
+            CarService.doLogin(login).then(function () {
+                $state.go('list');
+            }, function (error) {
+                $ionicPopup.alert({
+                    title: 'Ops...',
+                    template: 'Invalid Login'
+                });
+                console.log(error);
+            })
+
+        };
+
+    })
+
+    .controller('ListCtrl', function ($scope, CarService) {
+
+        CarService.getCars().then(function (cars) {
+            $scope.carsList = cars;
+        });
 
     })
 
@@ -22,34 +42,54 @@ angular.module('starter')
         $scope.car = angular.fromJson($stateParams.car);
 
         $scope.accessoryList = [
-            {name: 'Freio ABS', price: 800},
-            {name: 'Ar Condicionado', price: 1000},
-            {name: 'MP3 Player', price: 500}
+            {nome: 'Freio ABS', preco: 800},
+            {nome: 'Ar Condicionado', preco: 1000},
+            {nome: 'MP3 Player', preco: 500}
         ];
 
         $scope.change = function (accessory, isChecked) {
 
             if(isChecked) {
-                $scope.car.price += accessory.price;
+                $scope.car.preco += accessory.preco;
             } else {
-                $scope.car.price -= accessory.price;
+                $scope.car.preco -= accessory.preco;
             }
 
         };
 
     })
 
-    .controller('CheckoutCtrl', function ($ionicPopup, $scope, $state, $stateParams) {
+    .controller('CheckoutCtrl', function ($ionicPopup, $scope, $state, $stateParams, CarService) {
 
         $scope.finishedCar = angular.fromJson($stateParams.car);
 
         $scope.checkout = function () {
-            $ionicPopup.alert({
-                title: 'Congratulations',
-                template: 'You\'ve just bought a car!'
-            }).then(function () {
-                $state.go('list');
+
+            var order = {
+                params: {
+                    carro: $scope.finishedCar.nome,
+                    preco: $scope.finishedCar.preco,
+                    nome: $scope.finishedCar.fullName,
+                    endereco: $scope.finishedCar.address,
+                    email: $scope.finishedCar.email
+                }
+            };
+
+            CarService.postCars(order).then(function () {
+                $ionicPopup.alert({
+                    title: 'Congratulations',
+                    template: 'You\'ve just bought a car!'
+                }).then(function () {
+                    $state.go('list');
+                })
+            }, function () {
+                $ionicPopup.alert({
+                    title: 'Ops...',
+                    template: 'Required fields'
+                })
             })
+
+
         };
 
     })
