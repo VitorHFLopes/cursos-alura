@@ -1,6 +1,6 @@
 angular.module('starter')
 
-    .controller('LoginCtrl', function ($ionicPopup, $scope, $state, CarService) {
+    .controller('LoginCtrl', function ($ionicPopup, $rootScope, $scope, $state, CarService) {
 
         $scope.login = {
             email: 'joao@alura.com.br',
@@ -15,8 +15,9 @@ angular.module('starter')
                 }
             };
 
-            CarService.doLogin(login).then(function () {
-                $state.go('list');
+            CarService.doLogin(login).then(function (data) {
+                $rootScope.user = data.usuario;
+                $state.go('app.list');
             }, function (error) {
                 $ionicPopup.alert({
                     title: 'Ops...',
@@ -26,6 +27,12 @@ angular.module('starter')
             })
 
         };
+
+    })
+
+    .controller('MenuCtrl', function ($rootScope, $scope) {
+
+        $scope.loggedUser = $rootScope.user;
 
     })
 

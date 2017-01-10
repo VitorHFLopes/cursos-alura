@@ -1,3 +1,38 @@
 <ion-side-menus>
 
+    <!--Menu header-->
+    <ion-side-menu-content>
+
+        <ion-nav-bar class="bar bar-positive">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="center"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+
+        <!--Views to load inside menu-->
+        <ion-nav-view name="menuContent"></ion-nav-view>
+
+    </ion-side-menu-content>
+
+    <!--Menu content-->
+    <ion-side-menu side="left">
+        <ion-header-bar class="bar bar-positive">
+            <h1 class="title">Personal Data</h1>
+        </ion-header-bar>
+        <ion-content>
+            <div class="list card">
+
+                <div class="item item-avatar">
+                    <h2>{{loggedUser.nome}}</h2>
+                    <h3>{{loggedUser.email}}</h3>
+                </div>
+
+                <div class="item item-body">
+
+                </div>
+
+            </div>
+        </ion-content>
+    </ion-side-menu>
+
 </ion-side-menus>

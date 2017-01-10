@@ -12,10 +12,21 @@ angular.module('starter')
                 controller: 'LoginCtrl'
             })
 
-            .state('list', {
+            .state('app', {
+                url: '/app',
+                templateUrl: 'templates/menu.html',
+                abstract: true,
+                controller: 'MenuCtrl'
+            })
+
+            .state('app.list', {
                 url: '/list',
-                templateUrl: 'templates/list.html',
-                controller: 'ListCtrl'
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/list.html',
+                        controller: 'ListCtrl'
+                    }
+                }
             })
 
             .state('chosenCar', {
