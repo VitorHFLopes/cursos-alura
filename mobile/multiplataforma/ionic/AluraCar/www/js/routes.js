@@ -19,6 +19,16 @@ angular.module('starter')
                 controller: 'MenuCtrl'
             })
 
+            .state('app.profile', {
+                url: '/profile',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/profile.html',
+                        controller: 'ProfileCtrl'
+                    }
+                }
+            })
+
             .state('app.list', {
                 url: '/list',
                 views: {
@@ -29,16 +39,24 @@ angular.module('starter')
                 }
             })
 
-            .state('chosenCar', {
+            .state('app.chosenCar', {
                 url: '/car/:car',
-                templateUrl: 'templates/chosenCar.html',
-                controller: 'ChosenCarCtrl'
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/chosenCar.html',
+                        controller: 'ChosenCarCtrl'
+                    }
+                }
             })
 
-            .state('checkout', {
+            .state('app.checkout', {
                 url: '/checkout/:car',
-                templateUrl: 'templates/checkout.html',
-                controller: 'CheckoutCtrl'
+                view: {
+                    'menuContent' : {
+                        templateUrl: 'templates/checkout.html',
+                        controller: 'CheckoutCtrl'
+                    }
+                }
             })
 
     })

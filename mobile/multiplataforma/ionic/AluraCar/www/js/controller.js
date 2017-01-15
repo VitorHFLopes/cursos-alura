@@ -36,6 +36,24 @@ angular.module('starter')
 
     })
 
+    .controller('ProfileCtrl', function ($rootScope, $scope) {
+
+        $scope.isEditing = false;
+        $scope.textEditButton = 'Edit';
+        $scope.loggedUser = $rootScope.user;
+
+        $scope.updateProfile = function () {
+            if($scope.isEditing) {
+                $scope.isEditing = false;
+                $scope.textEditButton = 'Edit';
+            } else {
+                $scope.isEditing = true;
+                $scope.textEditButton = 'Save';
+            }
+        };
+
+    })
+
     .controller('ListCtrl', function ($scope, CarService) {
 
         CarService.getCars().then(function (cars) {
@@ -87,7 +105,7 @@ angular.module('starter')
                     title: 'Congratulations',
                     template: 'You\'ve just bought a car!'
                 }).then(function () {
-                    $state.go('list');
+                    $state.go('app.list');
                 })
             }, function () {
                 $ionicPopup.alert({

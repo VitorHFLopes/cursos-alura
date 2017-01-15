@@ -1,0 +1,27 @@
+<ion-view>
+    <ion-nav-title>Profile</ion-nav-title>
+    <ion-content>
+        <div class="list card">
+            <div class="item item-avatar">
+                {{loggedUser.nome}}
+            </div>
+        </div>
+        <div class="item item-body">
+            <div class="list">
+                <label class="item item-input">
+                    <span data-ng-hide="isEditing" class="input-label"> {{loggedUser.dataNascimento}} </span>
+                    <input data-ng-show="isEditing" type="text" data-ng-model="loggedUser.dataNascimento">
+                </label>
+                <label class="item item-input">
+                    <span data-ng-hide="isEditing" class="input-label"> {{loggedUser.telefone | brPhoneNumber}} </span>
+                    <input data-ng-show="isEditing" type="text" data-ng-model="loggedUser.telefone ">
+                </label>
+                <label class="item item-input">
+                    <span data-ng-hide="isEditing" class="input-label"> {{loggedUser.email}} </span>
+                    <input data-ng-show="isEditing" type="text" data-ng-model="loggedUser.email">
+                </label>
+                <button data-ng-click="updateProfile()" class="button button-full button-positive"> {{textEditButton}} </button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
