@@ -2,7 +2,7 @@
     <ion-nav-title>Alura Car</ion-nav-title>
     <ion-content>
         <ion-list ng-repeat="car in carsList">
-            <ion-item href="#/car/{{car}}">{{car.name}} - R{{car.price | currency}}</ion-item>
+            <ion-item href="#/app/car/{{car}}">{{car.nome}} - R{{car.preco | currency}}</ion-item>
         </ion-list>
     </ion-content>
 </ion-view>

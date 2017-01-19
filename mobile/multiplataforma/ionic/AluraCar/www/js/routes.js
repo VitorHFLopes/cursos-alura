@@ -2,26 +2,61 @@ angular.module('starter')
 
     .config(function ($stateProvider, $urlRouterProvider) {
 
-        $urlRouterProvider.otherwise('list');
+        $urlRouterProvider.otherwise('login');
 
         $stateProvider
 
-            .state('list', {
+            .state('login', {
+                url: '/login',
+                templateUrl: 'templates/login.html',
+                controller: 'LoginCtrl'
+            })
+
+            .state('app', {
+                url: '/app',
+                templateUrl: 'templates/menu.html',
+                abstract: true,
+                controller: 'MenuCtrl'
+            })
+
+            .state('app.profile', {
+                url: '/profile',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/profile.html',
+                        controller: 'ProfileCtrl'
+                    }
+                }
+            })
+
+            .state('app.list', {
                 url: '/list',
-                templateUrl: 'templates/list.html',
-                controller: 'ListCtrl'
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/list.html',
+                        controller: 'ListCtrl'
+                    }
+                }
             })
 
-            .state('chosenCar', {
+            .state('app.chosenCar', {
                 url: '/car/:car',
-                templateUrl: 'templates/chosenCar.html',
-                controller: 'ChosenCarCtrl'
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/chosenCar.html',
+                        controller: 'ChosenCarCtrl'
+                    }
+                }
             })
 
-            .state('checkout', {
+            .state('app.checkout', {
                 url: '/checkout/:car',
-                templateUrl: 'templates/checkout.html',
-                controller: 'CheckoutCtrl'
+                view: {
+                    'menuContent' : {
+                        templateUrl: 'templates/checkout.html',
+                        controller: 'CheckoutCtrl'
+                    }
+                }
             })
 
     })

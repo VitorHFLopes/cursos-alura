@@ -1,0 +1,22 @@
+<ion-view>
+    <ion-header-bar>
+        <h2>Opa</h2>
+    </ion-header-bar>
+    <ion-content>
+        <form data-ng-submit="doLogin()">
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <span class="input-label">Email</span>
+                    <input type="text" placeholder="Email" data-ng-model="login.email">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password</span>
+                    <input type="password" placeholder="Password" data-ng-model="login.password">
+                </label>
+                <button class="button button-block button-positive" type="submit">
+                    Login
+                </button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>
