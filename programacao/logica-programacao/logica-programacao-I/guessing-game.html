@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<meta charset="utf-8">
+
+<head>
+	<title>Jogo Adivinhação</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		var thoughtOfNumber = Math.round(Math.random() * 10);
+		var triedValue = parseInt(prompt('Insira seu chute'));
+
+		if(triedValue === thoughtOfNumber) {
+			show('Congratulations!!');
+		} else {
+			show('Not this time HA HA HA HA HA');
+			show('You should tried ' + thoughtOfNumber);
+		}
+		
+		function breakLine() {
+
+			document.write('<br><br>');
+
+		}
+
+		function show(frase) {
+
+			document.write(frase);
+			breakLine();
+
+		}
+
+		function sort(max) {
+
+			return Math.floor(Math.random() * (max - 0)) + 0;
+
+		}
+
+	</script>
+
+</body>
+</html>

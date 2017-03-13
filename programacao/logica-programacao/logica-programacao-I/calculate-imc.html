@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<meta charset="utf-8">
+
+<head>
+	<title>Calculo de IMC</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		var name = prompt('Insira nome');
+		var weight = prompt('Insira seu peso');
+		var height = prompt('Insira sua altura');
+
+		var imc = calculateImc(weight, height);
+
+		show('IMC do ' + name + ' é ' + imc);
+
+		if (imc < 18.5) {
+			show('You should eat more');
+		}
+
+		if (imc > 35) {
+			show('You should walk more');
+		}
+
+		if (imc <= 35 && imc >= 18.5) {
+			show('Congratulations');
+		}
+		
+		function breakLine() {
+
+			document.write('<br><br>');
+
+		}
+
+		function show(frase) {
+
+			document.write(frase);
+			breakLine();
+
+		}
+
+		function calculateImc(weight, height) {
+
+			return weight / (height * height);
+
+		}
+
+	</script>
+
+</body>
+</html>

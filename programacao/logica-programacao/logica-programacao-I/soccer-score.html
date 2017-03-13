@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<meta charset="utf-8">
+
+<head>
+	<title>Futebol</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		var winsNumber = parseInt(prompt('Informe o número de vitórias'));
+		var tiesNumber = parseInt(prompt('Informe o número de empates'));
+
+		var score = (winsNumber * 3) + tiesNumber;
+
+		show(score);
+
+		if(score > 28) {
+			show('Better');
+		}
+
+		if(score < 28) {
+			show('Worst');
+		}
+
+		if(score == 28) {
+			show('Equals');
+		}
+
+		function breakLine() {
+
+			document.write('<br><br>');
+
+		}
+
+		function show(frase) {
+
+			document.write(frase);
+			breakLine();
+
+		}
+
+	</script>
+
+</body>
+</html>
