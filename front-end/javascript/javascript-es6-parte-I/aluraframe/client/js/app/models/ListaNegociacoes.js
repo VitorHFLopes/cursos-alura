@@ -9,9 +9,19 @@ class ListaNegociacoes {
         
         this._negociacoes.push(negociacao);
     }
+
+    esvazia() {
+
+        this.setNegociacoes();
+    }
     
     get negociacoes() {
         
         return [].concat(this._negociacoes);
+    }
+
+    setNegociacoes(value = []) {
+
+        this._negociacoes = value;
     }
 }
