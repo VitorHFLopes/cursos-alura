@@ -7,7 +7,10 @@ class NegociacaoController {
         this._inputQuantidade = $('#quantidade');
         this._inputValor = $('#valor');
 
-        this._listaNegociacoes = new ListaNegociacoes();
+        this._listaNegociacoes = new ListaNegociacoes(() => {
+            /*console.log(this); //se refere a classe que o instanciou, no caso a NegociacaoController*/
+            this._negociacoesView.update(this._listaNegociacoes);
+        });
         this._negociacoesView = new NegociacoesView($('#negociacao-view'));
 
         this._mensagemView = new MensagemView($('#mensagem-view'));
@@ -20,7 +23,6 @@ class NegociacaoController {
         
         event.preventDefault();
         this._listaNegociacoes.adiciona(this._criaNegociacao());
-        this._negociacoesView.update(this._listaNegociacoes);
 
         this._mensagem.setTexto('Informação adicionada com sucesso');
         this._mensagemView.update(this._mensagem);
@@ -31,7 +33,6 @@ class NegociacaoController {
     apaga() {
 
         this._listaNegociacoes.esvazia();
-        this._negociacoesView.update(this._listaNegociacoes);
 
         this._mensagem.setTexto('Lista apagada com sucesso');
         this._mensagemView.update(this._mensagem);

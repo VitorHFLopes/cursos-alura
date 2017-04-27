@@ -1,0 +1,34 @@
+<html>
+    <title>Exercício 2</title>
+    <meta charset="UTF-8">
+    <body>
+        <!--<script>
+
+            class Relogio {
+
+                constructor() {
+
+                    this._segundos = 0;
+
+                    setInterval(() => {
+                        console.log(++this._segundos);
+                    }, 1000);
+                }
+            }
+
+            let relogio = new Relogio();
+
+        </script>-->
+
+        <script>
+            let carro = {
+                velocidade: 100,
+                acelera : () =>  {
+                    console.log(this);
+                    console.log(`Carro a ${this.velocidade} km por hora!`);
+                }
+            };
+            carro.acelera();
+        </script>
+    </body>
+</html>
