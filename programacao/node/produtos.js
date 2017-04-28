@@ -1,1 +1,0 @@
-console.log('Arquivos de produtos no Node.js');
