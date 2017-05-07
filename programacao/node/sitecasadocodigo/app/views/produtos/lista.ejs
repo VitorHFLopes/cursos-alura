@@ -3,13 +3,21 @@
     <body>
         <table>
             <tr>
-                <td>id</td>
-                <td>nome</td>
+                <td>ID</td>
+                <td>Nome</td>
+                <td>Descrição</td>
+                <td>Preço</td>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Livro NodeJS</td>
-            </tr>
+
+            <%lista.forEach(function (produto) {%>
+                <tr>
+                    <td><%=produto.id%></td>
+                    <td><%=produto.titulo%></td>
+                    <td><%=produto.descrica%></td>
+                    <td><%=produto.preco%></td>
+                </tr>
+            <%})%>
+
         </table>
     </body>
 </html>
