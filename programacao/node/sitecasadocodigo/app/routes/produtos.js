@@ -1,19 +1,12 @@
-var mysql = require('mysql');
-
-var connectionProperties = {
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'casadocodigo'
-};
-
-var connection = mysql.createConnection(connectionProperties);
+var connectionFactory = require('../infra/connection-factory');
 
 function rotasProdutos(app) {
 
     app.get('/produtos', getProdutos);
 
     function getProdutos(request, response) {
+
+        var connection = connectionFactory();
 
         connection.query('select * from produtos', getProdutos);
 
@@ -23,6 +16,7 @@ function rotasProdutos(app) {
             if (error) {
 
                 console.log(error);
+                return;
             }
 
             var viewParams = {
