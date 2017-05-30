@@ -12,4 +12,7 @@ function createConnection() {
     return mysql.createConnection(dbConfig);
 }
 
-module.exports = createConnection;
+module.exports = function () {
+
+    return createConnection;
+};

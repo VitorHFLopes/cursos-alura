@@ -1,16 +1,15 @@
-var connectionFactory = require('../infra/connection-factory');
-
 function rotasProdutos(app) {
 
     app.get('/produtos', getProdutos);
 
     function getProdutos(request, response) {
 
-        var connection = connectionFactory();
+        var connection = app.infra.connectionFactory();
+        var produtosBanco = app.infra.produtosBanco;
 
-        connection.query('select * from produtos', getProdutos);
+        produtosBanco.lista(connection, getProdutos);
 
-        //primeiro parametro de uma resposta do banco é sempre um erro
+        //primeiro parametro de qualquer callback é sempre um erro
         function getProdutos(error, produtos) {
 
             if (error) {
