@@ -15,8 +15,8 @@ int main() {
 	while(1) {
 
 		printf("Tentativa %d\n", tentativas);
+		
 		printf("Qual é o seu chute? ");
-
 		scanf("%d", &chute);
 		printf("Seu chute foi %d\n", chute);
 
