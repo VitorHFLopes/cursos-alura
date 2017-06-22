@@ -16,6 +16,6 @@ export class Negociacoes {
 
         /*Programação defensiva, no caso, cria uma 'cópia' do array original, não correndo
         risco de apagar o array original*/
-        return [].concat(this._negociacoes);
+        return ([] as Negociacao[]).concat(this._negociacoes);
     }
 }

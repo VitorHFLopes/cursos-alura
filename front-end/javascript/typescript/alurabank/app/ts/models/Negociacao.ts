@@ -13,28 +13,15 @@ export class Negociacao {
 
     //Atalho de criacao do construtor da classe com tipos definidos
     constructor(
-        private _data: Date,
-        private _quantidade: number, 
-        private _valor: number
+        readonly data: Date,
+        readonly quantidade: number,
+        readonly valor: number
     ) { }
-
-    getData(): Date {
-
-        return this._data;
-    }
-
-    getQuantidade(): number {
-
-        return this._quantidade;
-    }
-
-    getValor(): number {
-
-        return this._valor;
-    }
 
     getVolume(): number {
 
-        return this._quantidade * this._valor;
+        return this.quantidade * this.valor;
     }
 }
+
+//Propriedade readonly não podem ser alterados, caso haja tentativa, o typescript irá lançar um erro de compilação

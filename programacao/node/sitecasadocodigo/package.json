@@ -1,12 +1,12 @@
 {
-  "name": "sitecasadocodigo",
+  "name": "casadocodigo",
   "version": "1.0.0",
-  "description": "Site da casa do código",
+  "description": "site da casa do codigo",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Vitor Hugo F Lopes",
+  "author": "alberto",
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.5.6",

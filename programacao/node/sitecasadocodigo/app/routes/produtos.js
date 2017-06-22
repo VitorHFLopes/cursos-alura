@@ -1,32 +1,12 @@
-function rotasProdutos(app) {
-
-    app.get('/produtos', getProdutos);
-
-    function getProdutos(request, response) {
-
+module.exports = function(app) {
+    app.get('/produtos', function(req, res) {
         var connection = app.infra.connectionFactory();
-        var produtosBanco = app.infra.produtosBanco;
+        var produtosDAO = new app.infra.ProdutosDAO(connection);
 
-        produtosBanco.lista(connection, getProdutos);
-
-        //primeiro parametro de qualquer callback é sempre um erro
-        function getProdutos(error, produtos) {
-
-            if (error) {
-
-                console.log(error);
-                return;
-            }
-
-            var viewParams = {
-                lista: produtos
-            };
-
-            response.render('produtos/lista', viewParams);
-        }
+        produtosDAO.lista(function(err, results) {
+            res.render('produtos/lista', {lista: results});
+        });
 
         connection.end();
-    }
+    });
 }
-
-module.exports = rotasProdutos;

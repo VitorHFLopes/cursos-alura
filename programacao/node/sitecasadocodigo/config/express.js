@@ -1,22 +1,15 @@
 var express = require('express');
-var expressLoad = require('express-load');
+var load = require('express-load');
 
-function configuraExpress() {
-
+module.exports = function() {
     var app = express();
 
     app.set('view engine', 'ejs');
     app.set('views', './app/views');
 
-    var expressLoadConfig = {
-        cwd: 'app'
-    };
-
-    expressLoad('routes', expressLoadConfig)
+    load('routes', {cwd: 'app'})
         .then('infra')
         .into(app);
 
     return app;
 }
-
-module.exports = configuraExpress;
