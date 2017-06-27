@@ -25,12 +25,12 @@ System.register(["./View"], function (exports_1, context_1) {
                 <tbody>
                     ${model.paraArray().map(negociacao => `
                         <tr>
-                            <td>${negociacao.getData().getDate()} /
-                                ${negociacao.getData().getMonth() + 1} /
-                                ${negociacao.getData().getFullYear()}
+                            <td>${negociacao.data.getDate()} /
+                                ${negociacao.data.getMonth() + 1} /
+                                ${negociacao.data.getFullYear()}
                             </td>
-                            <td>${negociacao.getQuantidade()}</td>
-                            <td>${negociacao.getValor()}</td>
+                            <td>${negociacao.quantidade}</td>
+                            <td>${negociacao.valor}</td>
                             <td>${negociacao.getVolume()}</td>
                         </tr>
                         `).join('')}
