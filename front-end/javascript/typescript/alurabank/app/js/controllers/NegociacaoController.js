@@ -1,4 +1,4 @@
-System.register(["../models/index", "../views/index", "../helpers/decorators/index", "../helpers/decorators/meuDecoratorDeClasse"], function (exports_1, context_1) {
+System.register(["../models/index", "../views/index", "../helpers/decorators/index", "../helpers/decorators/meuDecoratorDeClasse", "../helpers/decorators/throttle"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -7,7 +7,7 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var __moduleName = context_1 && context_1.id;
-    var index_1, index_2, index_3, meuDecoratorDeClasse_1, NegociacaoController, DiaDaSemana;
+    var index_1, index_2, index_3, meuDecoratorDeClasse_1, throttle_1, NegociacaoController, DiaDaSemana;
     return {
         setters: [
             function (index_1_1) {
@@ -21,6 +21,9 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
             },
             function (meuDecoratorDeClasse_1_1) {
                 meuDecoratorDeClasse_1 = meuDecoratorDeClasse_1_1;
+            },
+            function (throttle_1_1) {
+                throttle_1 = throttle_1_1;
             }
         ],
         execute: function () {
@@ -31,8 +34,7 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
                     this._mensagemView = new index_2.MensagemView('#mensagemView');
                     this._negociacoesView.update(this._negociacoes);
                 }
-                adiciona(event) {
-                    event.preventDefault();
+                adiciona() {
                     let data = new Date(this._inputData.val().replace(/-/g, ','));
                     if (!this._ehDiaUtil(data)) {
                         this._mensagemView.update('Negociações somente em dias úteis');
@@ -73,6 +75,12 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
             __decorate([
                 index_3.domInject('#valor')
             ], NegociacaoController.prototype, "_inputValor", void 0);
+            __decorate([
+                throttle_1.throttle()
+            ], NegociacaoController.prototype, "adiciona", null);
+            __decorate([
+                throttle_1.throttle()
+            ], NegociacaoController.prototype, "importaDados", null);
             NegociacaoController = __decorate([
                 meuDecoratorDeClasse_1.meuDecoratorDeClasse()
             ], NegociacaoController);

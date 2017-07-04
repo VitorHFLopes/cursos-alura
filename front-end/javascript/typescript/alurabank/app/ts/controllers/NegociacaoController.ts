@@ -1,7 +1,8 @@
-import { Negociacoes, Negociacao } from '../models/index';
+import { Negociacoes, Negociacao, NegociacaoParcial } from '../models/index';
 import { NegociacoesView, MensagemView } from '../views/index';
 import { domInject } from '../helpers/decorators/index';
 import { meuDecoratorDeClasse } from "../helpers/decorators/meuDecoratorDeClasse";
+import {throttle} from "../helpers/decorators/throttle";
 
 @meuDecoratorDeClasse()
 export class NegociacaoController {
@@ -25,9 +26,8 @@ export class NegociacaoController {
         this._negociacoesView.update(this._negociacoes);
     }
 
-    adiciona(event: Event) {
-
-        event.preventDefault();
+    @throttle()
+    adiciona() {
 
         let data = new Date(this._inputData.val().replace(/-/g, ','));
 
@@ -50,6 +50,7 @@ export class NegociacaoController {
         this._mensagemView.update('Negociação adicionada com sucesso');
     }
 
+    @throttle()
     importaDados() {
 
         function isOk(resposta: Response) {
@@ -66,7 +67,7 @@ export class NegociacaoController {
             .then(resposta => isOk(resposta))
             .then(resposta => resposta.json())
             .then(
-                (dados: any[]) => {
+                (dados: NegociacaoParcial[]) => {
 
                     dados.map(dado =>
                         new Negociacao(new Date(), dado.vezes, dado.montante))
