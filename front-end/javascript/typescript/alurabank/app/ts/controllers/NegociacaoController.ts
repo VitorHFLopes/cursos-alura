@@ -1,4 +1,4 @@
-import {Negociacoes, Negociacao, NegociacaoParcial} from '../models/index';
+import {Negociacoes, Negociacao} from '../models/index';
 import {NegociacoesView, MensagemView} from '../views/index';
 import {domInject} from '../helpers/decorators/index';
 import {NegociacaoService} from '../services/index';
@@ -18,7 +18,7 @@ export class NegociacaoController {
     private _inputValor: JQuery;
 
     // private _negociacoes: Negociacoes = new Negociacoes;
-    private _negociacoes = new Negociacoes(); //Permitir omitir a escrita do tipo ja que estou atribuindo o valor ja tipado
+    private _negociacoes = new Negociacoes(); //Permite omitir a escrita do tipo ja que estou atribuindo o valor ja tipado
     private _negociacoesView = new NegociacoesView('#negociacoesView');
     private _mensagemView = new MensagemView('#mensagemView');
     private _negociacaoService = new NegociacaoService();
@@ -67,9 +67,16 @@ export class NegociacaoController {
 
         this._negociacaoService.obterNegociacoes(isOk)
 
-            .then(negociacoes => {
+            .then(negociacoesParaImportar => {
 
-                negociacoes.forEach(negociacao => this._negociacoes.adiciona(negociacao));
+                const negociacoesJaImportadas = this._negociacoes.paraArray();
+
+                negociacoesParaImportar
+                    .filter(negociacao => !negociacoesJaImportadas
+                        .some(jaImportada => negociacao
+                            .ehIgual(jaImportada)))
+                    .forEach(negociacao =>
+                    this._negociacoes.adiciona(negociacao));
 
                 this._negociacoesView.update(this._negociacoes);
             })
@@ -81,6 +88,9 @@ export class NegociacaoController {
         return data.getDay() !== DiaDaSemana.Domingo && data.getDay() !== DiaDaSemana.Sabado;
     }
 }
+
+//Uma classe pode herdar (extends) somente uma outra classe
+//Uma classe pode implementar (implements) quantas interfaces forem necessárias
 
 enum DiaDaSemana {
 

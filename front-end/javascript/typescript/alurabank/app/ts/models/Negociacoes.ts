@@ -1,6 +1,7 @@
 import { Negociacao } from './Negociacao';
+import { Igualavel } from './Igualavel';
 
-export class Negociacoes {
+export class Negociacoes implements Igualavel<Negociacoes>{
 
     // private _negociacoes: Array<Negociacao> = [];
 
@@ -18,4 +19,12 @@ export class Negociacoes {
         risco de apagar o array original*/
         return ([] as Negociacao[]).concat(this._negociacoes);
     }
+
+    ehIgual(negociacoes: Negociacoes): boolean {
+
+        return JSON.stringify(this._negociacoes) === JSON.stringify(negociacoes.paraArray());
+    }
 }
+
+//Uma classe pode herdar (extends) somente uma outra classe
+//Uma classe pode implementar (implements) quantas interfaces forem necessárias
