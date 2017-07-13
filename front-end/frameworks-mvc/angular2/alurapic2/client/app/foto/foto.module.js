@@ -7,18 +7,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-//Precisa receber NO MINIMO essas duas configurações
-var AppComponent = (function () {
-    function AppComponent() {
+var foto_component_1 = require("./foto.component");
+var FotoModule = (function () {
+    function FotoModule() {
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'app',
-            templateUrl: './app.component.html' //iniciar busca do arquivo na pasta raiz do projeto, no caso client
+    FotoModule = __decorate([
+        core_1.NgModule({
+            declarations: [foto_component_1.FotoComponent],
+            exports: [foto_component_1.FotoComponent] //O que será disponibilizado externamente ao módulo
         })
-    ], AppComponent);
-    return AppComponent;
+    ], FotoModule);
+    return FotoModule;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.FotoModule = FotoModule;
+//# sourceMappingURL=foto.module.js.map

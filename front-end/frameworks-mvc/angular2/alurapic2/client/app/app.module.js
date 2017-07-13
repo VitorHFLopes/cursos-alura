@@ -7,14 +7,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var platform_browser_1 = require("@angular/platform-browser");
+var platform_browser_1 = require("@angular/platform-browser"); //Indica que a aplicação irá rodar em um browser
 var app_component_1 = require("./app.component");
+var foto_module_1 = require("./foto/foto.module");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
+            imports: [platform_browser_1.BrowserModule, foto_module_1.FotoModule],
             declarations: [app_component_1.AppComponent],
             bootstrap: [app_component_1.AppComponent] //Qual componente carrega primeiro
         })
