@@ -6,16 +6,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+//Módulo principal do angular que permite a criação de um componente
 var core_1 = require("@angular/core");
-var platform_browser_1 = require("@angular/platform-browser"); //Indica que a aplicação irá rodar em um browser
-var app_component_1 = require("./app.component");
 var foto_module_1 = require("./foto/foto.module");
+//Indica que a aplicação irá rodar em um browser
+var platform_browser_1 = require("@angular/platform-browser");
+//Possui os providers necessários para criar a instância do Http
+var http_1 = require("@angular/http");
+//Carrega um helper do rxjs que pega o fluxo de resposta e coloca no array, permitindo o uso de um map assim que a
+//resposta chega
+require("rxjs/add/operator/map");
+var app_component_1 = require("./app.component");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, foto_module_1.FotoModule],
+            imports: [platform_browser_1.BrowserModule, foto_module_1.FotoModule, http_1.HttpModule],
             declarations: [app_component_1.AppComponent],
             bootstrap: [app_component_1.AppComponent] //Qual componente carrega primeiro
         })

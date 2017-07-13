@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Http } from '@angular/http';
 
 //Precisa receber NO MINIMO essas duas configurações
 @Component({
@@ -8,4 +9,28 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+    //O construtor de um componente é sempre chamado na sua criação, assim como um objeto
+
+    //No caso, o Inject faz um new Http implicitamente, utilizando ECMAScript 2015
+    // constructor(@Inject(Http) http) {
+    //
+    // }
+
+    _fotos: Object[] = [];
+
+    //Ja o TypeScript permite que, só de tipar a variável ele se encarrega de injetar a dependência
+    constructor(http: Http) {
+
+        http.get('v1/fotos') //Observable Response - Stream
+
+            .map(response => response.json()) //Com o rxjs map helper ativado é possível fazer isso
+
+            .subscribe(fotos => { //Me 'inscrevo' para saber quando os dados foram retornados
+
+                //Por padrão, as respostas do Http do angular2 vêm sempre em texto puro, portanto, no caso, não pode ser
+                //inserida em um array de objetos, por isso a transformação em json antes de injetar
+                this._fotos = fotos;
+                console.log(this._fotos);
+            }, error => console.error(error));
+    }
 }
