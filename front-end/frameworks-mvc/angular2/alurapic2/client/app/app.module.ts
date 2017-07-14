@@ -17,6 +17,7 @@ import {HttpModule} from "@angular/http";
 import "rxjs/add/operator/map"
 
 import {AppComponent} from './app.component'
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
     //Carrega os módulos necessários, parecido com a criação de módulos no angular 1.x
@@ -25,6 +26,7 @@ import {AppComponent} from './app.component'
         FotoModule,
         HttpModule,
         PainelModule,
+        FormsModule,
         routing
     ],
 

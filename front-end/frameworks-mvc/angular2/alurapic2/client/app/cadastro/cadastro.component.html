@@ -1,1 +1,32 @@
 <h1 class="text-center">Cadastro de fotos</h1>
+
+<div class="container">
+
+    <form class="row" (submit)="cadastrar($event)">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Título</label>
+                <input class="form-control" name="titulo" [(ngModel)]="_foto.titulo"  autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>URL</label>
+                <input class="form-control" name="url" [(ngModel)]="_foto.url" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>Descrição</label>
+                <textarea class="form-control" name="descricao" [(ngModel)]="_foto.descricao" autocomplete="off">
+                </textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Salvar
+            </button>
+            <a [routerLink]="['']" class="btn btn-primary">Voltar</a>
+            <hr>
+        </div>
+    </form>
+</div>
+
+<!--( ) cria um data binding da view para a model-->
+<!--[ ] cria um data binding da model para a view-->
+<!--[( )] cria o two way data binding-->

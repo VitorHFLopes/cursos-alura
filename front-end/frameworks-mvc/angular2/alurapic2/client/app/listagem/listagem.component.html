@@ -8,13 +8,23 @@
         <div class="col-md-12">
             <form>
                 <div class="input-group">
-                <span class="input-group-btn">
+                    <span class="input-group-btn">
 
-                    <!--Alterna entre as rotas sem dar um 'enter' na página, ou seja, sem recarregar-lá, uma SPA-->
-                    <a [routerLink]="['/cadastro']" href="/cadastro" class="btn btn-primary">
-                        Nova foto
-                    </a>
-                </span>
+                        <!--Alterna entre as rotas sem dar um 'enter' na página, ou seja, sem recarregar-lá, uma SPA-->
+                        <a [routerLink]="['/cadastro']" href="/cadastro" class="btn btn-primary">
+                            Nova foto
+                        </a>
+                    </span>
+
+                    <!--
+                        #nome ou var-
+                        cria uma 'variável local' ou 'variável de template' como se fosse seletor css de id
+
+                        ( ) é um ativador (trigger) dizendo pro angular atualizar a view com o novo valor, pois ele só
+                        atualiza a view perante a um evento assíncrono, o (keyup) um envio de dados unidirecional da
+                        view para a model
+                    -->
+                    <input #textoProcurado (keyup)="0" class="form-control" placeholder="filtrar pelo título da foto">
                 </div>
             </form>
         </div> <!-- fim col-md-12 -->
@@ -22,7 +32,8 @@
     <br>
 
     <div class="row">
-        <painel class="col-md-2" *ngFor="let foto of _fotos" [_titulo]="foto.titulo">
+        <painel class="col-md-2" *ngFor="let foto of _fotos | filtroPorTitulo: textoProcurado.value"
+                [_titulo]="foto.titulo | uppercase">
             <foto [url]="foto.url" [titulo]="foto.titulo"></foto>
         </painel>
     </div>
