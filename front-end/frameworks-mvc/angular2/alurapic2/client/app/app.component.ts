@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 //Precisa receber NO MINIMO essas duas configurações
 @Component({
