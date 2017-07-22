@@ -17,7 +17,9 @@ import {HttpModule} from "@angular/http";
 import "rxjs/add/operator/map"
 
 import {AppComponent} from './app.component'
-import {FormsModule} from "@angular/forms";
+
+//O ReactiveFormsModule permite fazer toda a validação do formulário HTML no lado do JS, na classe do component
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
     //Carrega os módulos necessários, parecido com a criação de módulos no angular 1.x
@@ -27,6 +29,7 @@ import {FormsModule} from "@angular/forms";
         HttpModule,
         PainelModule,
         FormsModule,
+        ReactiveFormsModule,
         routing
     ],
 

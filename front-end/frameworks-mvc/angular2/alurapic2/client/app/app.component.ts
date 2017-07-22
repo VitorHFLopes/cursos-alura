@@ -30,7 +30,6 @@ export class AppComponent {
                 //Por padrão, as respostas do Http do angular2 vêm sempre em texto puro, portanto, no caso, não pode ser
                 //inserida em um array de objetos, por isso a transformação em json antes de injetar
                 this._fotos = fotos;
-                console.log(this._fotos);
             }, error => console.error(error));
     }
 }

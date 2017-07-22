@@ -2,27 +2,46 @@
 
 <div class="container">
 
-    <form class="row" (submit)="cadastrar($event)">
+    <!--formGroup define o formulario a ser inserido no grupo de formulários-->
+    <form [formGroup]="_cadastroForm" class="row" (submit)="cadastrar($event)">
         <div class="col-md-6">
             <div class="form-group">
                 <label>Título</label>
-                <input class="form-control" name="titulo" [(ngModel)]="_foto.titulo"  autocomplete="off">
+                <!--formControlName define qual a propriedade, qual input deve ser analisado para validar o erro-->
+                <input class="form-control" name="titulo" formControlName="titulo" [(ngModel)]="_foto.titulo"
+                       autocomplete="off">
+                <div *ngIf="_cadastroForm.controls.titulo.invalid">
+                    <span *ngIf="_cadastroForm.controls.titulo.errors.required" class="form-control alert-danger">
+                        Título obrigatório
+                    </span>
+                    <span *ngIf="_cadastroForm.controls.titulo.errors.minlength" class="form-control alert-danger">
+                        Título deve conter 4 caracteres
+                    </span>
+                </div>
             </div>
             <div class="form-group">
                 <label>URL</label>
-                <input class="form-control" name="url" [(ngModel)]="_foto.url" autocomplete="off">
+                <input class="form-control" name="url" formControlName="url" [(ngModel)]="_foto.url" autocomplete="off"
+                       required>
+                <span *ngIf="_cadastroForm.controls.url.invalid" class="form-control alert-danger">
+                    URL obrigatória
+                </span>
             </div>
             <div class="form-group">
                 <label>Descrição</label>
-                <textarea class="form-control" name="descricao" [(ngModel)]="_foto.descricao" autocomplete="off">
+                <textarea class="form-control" name="descricao" formControlName="descricao"
+                          [(ngModel)]="_foto.descricao" autocomplete="off">
                 </textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">
-                Salvar
-            </button>
+            <button type="submit" class="btn btn-primary" [disabled]="_cadastroForm.invalid">Salvar</button>
+
             <a [routerLink]="['']" class="btn btn-primary">Voltar</a>
+
             <hr>
+        </div>
+        <div class="col-md-6">
+            <foto [url]="_foto.url" [titulo]="_foto.titulo"></foto>
         </div>
     </form>
 </div>
@@ -30,3 +49,12 @@
 <!--( ) cria um data binding da view para a model-->
 <!--[ ] cria um data binding da model para a view-->
 <!--[( )] cria o two way data binding-->
+
+<!--O * é um atalho para declarar um diretiva, que também pode ser declarada como:
+
+    template="ngIf expression"
+
+    OU
+
+    template [ngIf]="expression"
+-->
