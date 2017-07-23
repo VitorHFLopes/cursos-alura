@@ -19,7 +19,8 @@ export class FotoComponent {
     // }
 
     // TypeScript
+    _id: string;
+    descricao: string;
     @Input() titulo: string; //Inbound property - aceita valores
     @Input() url: string; //Inbound property - aceita valores
-    descricao: string;
 }

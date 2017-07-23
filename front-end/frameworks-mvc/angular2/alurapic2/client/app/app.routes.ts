@@ -13,6 +13,10 @@ const appRoutes: Routes = [
         component: CadastroComponent
     },
     {
+        path: 'cadastro/:id',
+        component: CadastroComponent
+    },
+    {
         path: '**',
         component: ListagemComponent
     }
