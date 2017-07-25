@@ -24,3 +24,6 @@ export class PainelComponent implements OnInit{
 // do componente acontece, não gerando .length of undefined Error.
 
 //Para garantir sua implementação correta, utilizamos a interface, o contrato, OnInit
+
+//Para utilizar um elemento diretamente do DOM, temos que atribuir o elemento a uma referencia do angular, ElementRef.
+//Para manipularmos o elemento, devemos pegar a propriedade nativeElement

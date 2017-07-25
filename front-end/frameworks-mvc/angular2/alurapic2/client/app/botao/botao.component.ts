@@ -12,7 +12,10 @@ export class BotaoComponent {
     @Input() tipo: string = 'button';
     @Input() desabilitado: boolean = false;
     @Input() confirmacao: boolean = false;
-    @Output() acao = new EventEmitter;
+    @Output() acao = new EventEmitter();
+
+    //@Output() acao = new EventEmitter<string>(); É possível tipar os dados do evento, define o tipo do parametro do
+    //construtor
 
     executaAcao() {
 
