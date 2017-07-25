@@ -20,6 +20,7 @@ import {AppComponent} from './app.component'
 
 //O ReactiveFormsModule permite fazer toda a validação do formulário HTML no lado do JS, na classe do component
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {BotaoModule} from "./botao/botao.module";
 
 @NgModule({
     //Carrega os módulos necessários, parecido com a criação de módulos no angular 1.x
@@ -30,6 +31,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
         PainelModule,
         FormsModule,
         ReactiveFormsModule,
+        BotaoModule,
         routing
     ],
 

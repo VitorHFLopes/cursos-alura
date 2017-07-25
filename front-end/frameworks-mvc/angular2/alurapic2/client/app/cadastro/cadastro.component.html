@@ -2,6 +2,8 @@
 
 <div class="container">
 
+    <p *ngIf="_mensagem.length" class="alert alert-info">{{_mensagem}}</p>
+
     <!--formGroup define o formulario a ser inserido no grupo de formulários-->
     <form [formGroup]="_cadastroForm" class="row" (submit)="cadastrar($event)">
         <div class="col-md-6">
@@ -34,7 +36,8 @@
                 </textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary" [disabled]="_cadastroForm.invalid">Salvar</button>
+            <!--<button type="submit" class="btn btn-primary" [disabled]="_cadastroForm.invalid">Salvar</button>-->
+            <botao nome="Salvar" estilo="btn-primary" tipo="submit" [desabilitado]="_cadastroForm.invalid"></botao>
 
             <a [routerLink]="['']" class="btn btn-primary">Voltar</a>
 
