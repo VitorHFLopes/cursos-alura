@@ -1,6 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+//essas bibliotecas foram usadas para:
+#include <stdio.h> //Leitura das entradas de usuario e print na tela
+#include <stdlib.h> //Uso das funcoes int rand() e void srand()
+#include <time.h> //Uso da funcao time_t time()
 
 int main() {
 
