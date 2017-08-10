@@ -1,5 +1,6 @@
 import {NgModule, ErrorHandler} from '@angular/core';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
+import {Storage} from '@ionic/storage';
 import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
 
@@ -7,6 +8,16 @@ import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/toPromise'
 import {EscolhaPage} from '../pages/escolha/escolha';
 import {CadastroPage} from '../pages/cadastro/cadastro';
+import {AgendamentoService} from '../domain/agendamento/agendamento.service';
+import {AgendamentoDao} from '../domain/agendamento/agendamento-dao';
+
+function provideStorage() {
+
+    return new Storage(['indexeddb'], {
+        name: 'aluracar',
+        storeName: 'agendamentos'
+    });
+}
 
 @NgModule({
     declarations: [
@@ -18,14 +29,27 @@ import {CadastroPage} from '../pages/cadastro/cadastro';
     imports: [
         IonicModule.forRoot(MyApp)
     ],
-    bootstrap: [IonicApp],
+    bootstrap: [
+        IonicApp
+    ],
     entryComponents: [
         MyApp,
         HomePage,
         EscolhaPage,
         CadastroPage
     ],
-    providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+    providers: [
+        AgendamentoService,
+        AgendamentoDao,
+        {
+            provide: ErrorHandler,
+            useClass: IonicErrorHandler
+        },
+        {
+            provide: Storage,
+            useFactory: provideStorage
+        }
+    ]
 })
 export class AppModule {
 }

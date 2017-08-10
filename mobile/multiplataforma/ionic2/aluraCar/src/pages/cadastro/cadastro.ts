@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {Alert, AlertController, NavController, NavParams} from 'ionic-angular';
 import {Carro} from '../../domain/carro/carro';
-import {Http} from '@angular/http';
 import {HomePage} from '../home/home';
 import {Agendamento} from '../../domain/agendamento/agendamento';
+import {AgendamentoService} from '../../domain/agendamento/agendamento.service';
 
 @Component({
     templateUrl: './cadastro.html'
@@ -18,8 +18,8 @@ export class CadastroPage {
 
     constructor(private _navParams: NavParams,
                 private _navCtrl: NavController,
-                private _http: Http,
-                private _alertCtrl: AlertController) {
+                private _alertCtrl: AlertController,
+                private agendamentoService: AgendamentoService) {
 
         this.carro = this._navParams.get('carro');
         this.precoTotal = this._navParams.get('precoTotal');
@@ -37,26 +37,27 @@ export class CadastroPage {
 
     finalizaAtendimento() {
 
-        if (!this.agendamento.nome || ! this.agendamento.endereco || !this.agendamento.email) {
+        if (!this.agendamento.nome || !this.agendamento.endereco || !this.agendamento.email) {
 
             this._alertCtrl.create({
                 title: 'Dados obrigatórios',
                 subTitle: 'Por favor preencha todos os campos',
-                buttons: [{ text: 'Ok'}]
+                buttons: [{text: 'Ok'}]
             }).present();
-            
+
             return;
         }
 
-        this._http
-            .get(`https://aluracar.herokuapp.com/salvarpedido?carro=${this.agendamento.carro.nome}&nome=${this.agendamento.nome}&preco=${this.agendamento.valor}&endereco=${this.agendamento.endereco}&email=${this.agendamento.email}&dataAgendamento=${this.agendamento.data}`)
-            .toPromise()
-            .then(() => {
-                this.alerta.setSubTitle('Atendimento agendado com sucesso');
+        this.agendamentoService
+            .agenda(this.agendamento)
+            .then(confirmado => {
+                confirmado ?
+                    this.alerta.setSubTitle('Agendamento realizado com sucesso!') :
+                    this.alerta.setSubTitle('Não foi possível realizar o agendamento. Tente mais tarde');
                 this.alerta.present();
             })
-            .catch(erro => {
-                this.alerta.setSubTitle('Falha ao agendar atendimento');
+            .catch(error => {
+                this.alerta.setSubTitle(error.message);
                 this.alerta.present();
             });
     }
