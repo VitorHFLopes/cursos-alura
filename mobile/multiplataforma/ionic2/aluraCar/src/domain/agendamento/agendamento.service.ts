@@ -10,9 +10,14 @@ export class AgendamentoService {
                 private _agendamentoDao: AgendamentoDao) {
     }
 
+    montaUrl(agendamento: Agendamento): string {
+
+        return `https://aluracar.herokuapp.com/salvarpedido?carro=${agendamento.carro.nome}&nome=${agendamento.nome}&preco=${agendamento.valor}&endereco=${agendamento.endereco}&email=${agendamento.email}&dataAgendamento=${agendamento.data}`;
+    }
+
     agenda(agendamento: Agendamento) {
 
-        const apiUrl = `https://aluracar.herokuapp.com/salvarpedido?carro=${agendamento.carro.nome}&nome=${agendamento.nome}&preco=${agendamento.valor}&endereco=${agendamento.endereco}&email=${agendamento.email}&dataAgendamento=${agendamento.data}`;
+        const apiUrl = this.montaUrl(agendamento);
 
         return this._agendamentoDao.ehAgendamentoDuplicado(agendamento)
             .then(ehDuplicado => {
@@ -29,5 +34,17 @@ export class AgendamentoService {
                     .then(() => this._agendamentoDao.salva(agendamento))
                     .then(() => agendamento.confirmado);
             })
+    }
+
+    reenvia(agendamento: Agendamento) {
+
+        const apiUrl = this.montaUrl(agendamento);
+
+        return this._http
+            .get(apiUrl)
+            .toPromise()
+            .then(() => agendamento.confirmado = true, error => console.error(error))
+            .then(() => this._agendamentoDao.salva(agendamento))
+            .then(() => agendamento.confirmado);
     }
 }
