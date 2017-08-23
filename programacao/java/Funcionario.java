@@ -1,23 +1,86 @@
 
 class Funcionario {
 
-    String nome;
-    String departamento;
-    double salario;
-    Data dataEntrada = new Data();
-    String rg;
+    private String nome;
+    private String departamento;
+    private double salario;
+    private Data dataEntrada = new Data();
+    private String rg;
+    private static int identificador = 0;
 
-    void recebeAumento(double valorDoAumento) {
+    public static int getIdentificador() {
+
+        return identificador;
+    }
+
+    public Funcionario(String nome) {
+
+        identificador++;
+        this.nome = nome;
+    }
+
+    public Funcionario() {
+
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+
+        this.departamento = departamento;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+
+        this.salario = salario;
+    }
+
+    public Data getDataEntrada() {
+        return dataEntrada;
+    }
+
+    public void setDataEntrada(Data dataEntrada) {
+
+        this.dataEntrada = dataEntrada;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+
+        this.rg = rg;
+    }
+
+    public void recebeAumento(double valorDoAumento) {
 
         this.salario += valorDoAumento;
     }
 
-    double calculaGanhoAnual() {
+    public double calculaGanhoAnual() {
 
         return this.salario * 12;
     }
 
-    void mostra() {
+    public void mostra() {
 
         System.out.println(this.nome);
         System.out.println(this.departamento);
@@ -45,8 +108,13 @@ class Empresa {
 
     String nome;
     String cnpj;
-    Funcionario[] funcionarios = new Funcionario[10];
+    Funcionario[] funcionarios;
     int posicao;
+
+    public Empresa(int qntdFuncionarios) {
+
+        this.funcionarios = new Funcionario[qntdFuncionarios];
+    }
 
     void adicionaFuncionario(Funcionario funcionario) {
 
@@ -62,9 +130,12 @@ class Empresa {
         }
     }
 
-    boolean contem(Funcionario funcionario) {
+    public Funcionario getFuncionario(int posicao) {
 
-        boolean encontrou = false;
+        return this.funcionarios[posicao];
+    }
+
+    boolean contem(Funcionario funcionario) {
 
         for (int i = 0; i < this.posicao; i++) {
 
@@ -81,16 +152,33 @@ class Empresa {
 class TestaFuncionario {
 
     public static void main(String[] args) {
-        Empresa empresa = new Empresa();
+        Empresa empresa = new Empresa(10);
 
         for (int i = 0; i < 5; i++) {
 
             Funcionario funcionario = new Funcionario();
-            funcionario.salario = 2.33 * (i + 1);
+            funcionario.setSalario(2.33 * (i + 1));
+            funcionario.setNome("Vitor");
 
             empresa.adicionaFuncionario(funcionario);
         }
 
         System.out.println(empresa.contem(empresa.funcionarios[0]));
+    }
+}
+
+class TestaStatic {
+
+    public static void main(String[] args) {
+        
+        System.out.println(Funcionario.getIdentificador());
+    }
+}
+
+class Teste {
+    int x = 37;
+
+    public static void main(String[] args) {
+        System.out.println(x);
     }
 }

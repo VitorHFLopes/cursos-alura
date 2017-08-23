@@ -48,4 +48,4 @@ front-end/frameworks-mvc/angular2/alurapic2/client/app/**/*.js.map
 front-end/frameworks-mvc/angular2/alurapic2/client/app/*.js
 front-end/frameworks-mvc/angular2/alurapic2/client/app/*.js.map
 
-*.class
+programacao/java/*.class
