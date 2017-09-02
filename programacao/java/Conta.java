@@ -7,6 +7,11 @@ abstract class Conta {
     }
 
     public void deposita(double valor) {
+
+        if (valor < 0) {
+            throw new ValorInvalidoException("Você tentou depositar um valor negativo");
+        }
+
         this.saldo += valor;
     }
 
@@ -83,6 +88,12 @@ class TestaContas {
 
         System.out.println(cc.getSaldo());
         System.out.println(cp.getSaldo());
+
+        try {
+            cc.deposita(-100);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
 
@@ -131,7 +142,7 @@ class GerenciadorDeImpostoDeRenda {
     }
 }
 
-public class TestaGerenciadorDeImpostoDeRenda {
+class TestaGerenciadorDeImpostoDeRenda {
     public static void main(String[] args) {
 
         GerenciadorDeImpostoDeRenda gerenciador = new GerenciadorDeImpostoDeRenda();
@@ -149,4 +160,15 @@ public class TestaGerenciadorDeImpostoDeRenda {
 
 interface Tributavel {
     double calculaTributos();
+}
+
+class ValorInvalidoException extends RuntimeException {
+    
+    public final String excecao;
+
+    ValorInvalidoException(String excecao) {
+
+        super(excecao);
+        this.excecao = excecao;
+    }
 }
