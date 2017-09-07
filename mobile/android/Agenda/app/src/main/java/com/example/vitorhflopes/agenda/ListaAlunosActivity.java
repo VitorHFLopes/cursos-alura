@@ -1,8 +1,11 @@
 package com.example.vitorhflopes.agenda;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class ListaAlunosActivity extends AppCompatActivity {
@@ -25,5 +28,15 @@ public class ListaAlunosActivity extends AppCompatActivity {
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, alunos);
 
         listaAlunos.setAdapter(adapter);
+
+        Button button = (Button) findViewById(R.id.novo_aluno);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent vaiProFormularioIntent = new Intent(ListaAlunosActivity.this, FormularioActivity.class);
+                startActivity(vaiProFormularioIntent);
+            }
+        });
     }
 }

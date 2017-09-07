@@ -40,11 +40,11 @@
             android:max="10"
             android:id="@+id/formulario_nota"/>
 
-        <Button
+        <!--<Button
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:text="Salvar"
-            android:id="@+id/formulario_salvar"/>
+            android:id="@+id/formulario_salvar"/>-->
 
     </LinearLayout>
 
