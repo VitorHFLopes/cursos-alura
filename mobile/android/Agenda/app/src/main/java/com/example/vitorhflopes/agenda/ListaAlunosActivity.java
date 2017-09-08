@@ -8,6 +8,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.vitorhflopes.agenda.dao.AlunoDAO;
+import com.example.vitorhflopes.agenda.modelo.Aluno;
+
+import java.util.List;
+
 public class ListaAlunosActivity extends AppCompatActivity {
 
     @Override
@@ -18,25 +23,38 @@ public class ListaAlunosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
 
-        String[] alunos = {"Vitor", "Hugo", "Fernandes", "Lopes"};
-
-        //Encontra qual componentes queremos usar para criar a lista, no caso ListView
-        ListView listaAlunos = (ListView) findViewById(R.id.lista_alunos);
-
-        //Converte a lista os alunos em View, no caso o componente ListView
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, alunos);
-
-        listaAlunos.setAdapter(adapter);
+        carregalista();
 
         Button button = (Button) findViewById(R.id.novo_aluno);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent vaiProFormularioIntent = new Intent(ListaAlunosActivity.this, FormularioActivity.class);
+                Intent vaiProFormularioIntent =
+                        new Intent(ListaAlunosActivity.this, FormularioActivity.class);
                 startActivity(vaiProFormularioIntent);
             }
         });
+    }
+
+    private void carregalista() {
+        AlunoDAO dao = new AlunoDAO(this);
+        List<Aluno> alunos = dao.pegaAlunos();
+        dao.close();
+
+        //Encontra qual componentes queremos usar para criar a lista, no caso ListView
+        ListView listaAlunos = (ListView) findViewById(R.id.lista_alunos);
+
+        //Converte a lista os alunos em View, no caso o componente ListView
+        ArrayAdapter<Aluno> adapter =
+                new ArrayAdapter<Aluno>(this, android.R.layout.simple_list_item_1, alunos);
+
+        listaAlunos.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        carregalista();
     }
 }
