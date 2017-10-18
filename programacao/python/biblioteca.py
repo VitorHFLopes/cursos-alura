@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# declara que o arquivo será lido pelo interpretador do python como utf-8
+
 def gera_nome_convite(nome):
     parte1 = nome[0:4]
     tamanho_nome = len(nome)
@@ -22,4 +25,3 @@ def remover(nomes):
     nomes.remove(nome)
 
 # raw_input() pega entrada do teclado
-
