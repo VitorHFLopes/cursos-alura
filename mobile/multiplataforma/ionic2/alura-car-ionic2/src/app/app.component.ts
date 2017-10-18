@@ -1,12 +1,12 @@
-import {Component, ViewChild} from '@angular/core';
-import {Nav, Platform} from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Nav, Platform } from 'ionic-angular';
 
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
-import {AgendamentoPage} from '../pages/agendamento/agendamento';
-import {LoginPage} from '../pages/login/login';
-import {PerfilPage} from '../pages/perfil/perfil';
+import { AgendamentoPage } from '../pages/agendamento/agendamento';
+import { LoginPage } from '../pages/login/login';
+import { PerfilPage } from '../pages/perfil/perfil';
 
 @Component({
     templateUrl: 'app.html'

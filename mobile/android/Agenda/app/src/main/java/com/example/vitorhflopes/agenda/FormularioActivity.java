@@ -1,31 +1,25 @@
 package com.example.vitorhflopes.agenda;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.vitorhflopes.agenda.dao.AlunoDAO;
+import com.example.vitorhflopes.agenda.modelo.Aluno;
+
 public class FormularioActivity extends AppCompatActivity {
+
+    FormularioHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario);
 
-        /*Button botao = (Button) findViewById(R.id.formulario_salvar);
-
-        botao.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(FormularioActivity.this, "Botao clicado", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        });*/
+        helper = new FormularioHelper(this);
     }
 
     @Override
@@ -43,7 +37,21 @@ public class FormularioActivity extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.menu_formulario_ok:
-                Toast.makeText(FormularioActivity.this, "Botao clicado", Toast.LENGTH_SHORT).show();
+
+                Aluno aluno = helper.getAluno();
+
+                // Criou o dao para isolar a complexidade da conexao e queries do banco
+                AlunoDAO dao = new AlunoDAO(this);
+                dao.insere(aluno);
+
+                // Boa prática é sempre fechar a conexão com o banco após o uso
+                dao.close();
+
+                Toast.makeText(
+                        FormularioActivity.this,
+                        "Aluno " + aluno.getNome() + " salvo",
+                        Toast.LENGTH_SHORT).show();
+
                 finish();
                 break;
         }
