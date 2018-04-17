@@ -2,6 +2,12 @@ body {
     font-family: 'Crimson Text', 'Times New Roman', serif;
     background-color: #F2FFFC;
     font-size: 120%;
+    line-height: 1.5;
+    /* 
+    Ela controla o espaço entre as linhas de texto ou, mais precisamente, 
+    qual a altura que uma linha de texto deve ter, independente do tamanho do 
+    texto dentro dela.
+    */
 }
 
 h1,
@@ -13,10 +19,26 @@ main h1 {
     text-align: center;
     color: #FFF;
     background-color: #851944;
+    padding: 25px;
+    border-bottom: 10px solid #000;
 }
 
 main a {
     color: #851944;
+}
+
+/* main div {
+    width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+} */
+
+/*  OU  */
+
+main div {
+    width: 720px;
+    margin: auto;
+    /* um parametro aplica estilo so nas laterais */
 }
 
 p {
@@ -24,12 +46,25 @@ p {
 }
 
 blockquote {
-    background-color: #D9E5E3
+    background-color: #D9E5E3;
+    padding: 20px;
+    border: 10px solid #C2CCCA;
+    width: 250px;
+    box-sizing: border-box;
+    /*
+    Por padrão, o navegador mede a largura ignorando padding e bordas. 
+    No momento em que colocamos BORDER-BOX, dizemos ao navegador que ele deve 
+    considerar padding e bordas nesse cálculo. Então o elemento diminui pois 
+    agora os 250 pixels que definimos de largura incluem os paddings e bordas 
+    do elemento.  
+    */
 }
 
 aside {
     background-color: #3C1D3D;
     color: #F2FFFC;
+    padding: 20px;
+    text-align: center;
 }
 
 aside a {
@@ -43,4 +78,27 @@ aside nav a {
 footer {
     background-color: #000;
     color: #F2FFFC;
+    padding: 20px;
 }
+
+.gravata-borboleta {
+    border-top: 30px solid transparent;
+    border-right: 30px solid red;
+    border-bottom: 30px solid transparent;
+    border-left: 30px solid red;
+    width: 0;
+}
+
+.triangulo-reto {
+    border-top: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-left: 30px solid red;
+    border-bottom: 30px solid red;
+    width: 0;
+}
+
+/*
+ a mudança de cor entre as bordas ocorre nas diagonais do elemento, então a 
+borda inferior vai ficar com a aparência de um triângulo, desde que o elemento 
+tenha zero pixels de largura (senão vai parecer um trapézio) 
+*/
