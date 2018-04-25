@@ -4,15 +4,18 @@
     <head>
         <title>Blog - Joao da Silva</title>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,600">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700">
         <link rel="icon" href="./assets/favicon.png">
+        <link rel="stylesheet" href="./assets/reset.css">
         <link rel="stylesheet" href="./site.css">
     </head>
 
     <body>
         <main>
-            <h1>Blog</h1>
+            <h1 class="titulo-principal">Blog</h1>
 
-            <div>
+            <div class="texto-principal">
                 <h2>O essencial de design responsivo</h2>
                 <time datetime="2018-04-11">11 de abril de 2018</time>
 
@@ -21,7 +24,8 @@
                         Design responsivo tem ganho cada vez mais atenção como técnica de desenvolvimento
                         de páginas web para dispositivos móveis. Mas como começar?
                     </p>
-                    <a href="#">Leia mais</a>
+
+                    <a href="#" class="leia-mais">Leia mais</a>
                     <footer>Tags:
                         <a href="#">design responsivo</a>,
                         <a href="#">mobile</a>,
@@ -38,7 +42,7 @@
                         a serem seguidas, inclusive da própria W3C. Mas vale a pena
                         investir nisso?
                     </p>
-                    <a href="#">Leia mais</a>
+                    <a href="#" class="leia-mais">Leia mais</a>
                     <footer>Tags:
                         <a href="#">acessibilidade</a>,
                         <a href="#">W3C</a>
@@ -54,7 +58,7 @@
                         e dinâmicas. Porém, há alguns cuidados que devem ser tomados
                         ao colocarmos código JavaScript em nossas páginas.
                     </p>
-                    <a href="#">Leia mais</a>
+                    <a href="#" class="leia-mais">Leia mais</a>
                     <footer>Tags:
                         <a href="#">Javascript</a>,
                         <a href="#">web</a>
@@ -65,7 +69,7 @@
 
         <img src="./assets/riot.png" alt="Foto do João da Silva">
 
-        <aside>
+        <aside class="barra-navegacao">
             <h1>João da Silva</h1>
             <nav>
                 <ul>
@@ -86,9 +90,26 @@
                     </li>
                 </ul>
             </nav>
+            <ul class="links-sociais">
+                <li>
+                    <a href="https://github.com/git-joaodasilva">
+                        <img src="./assets/github.png" alt="GitHub">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/twitter-joaodasilva">
+                        <img src="./assets/twitter.png" alt="Twitter">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://br.linkedin.com/pub/linkedin-joao-da-silva/32/4/508">
+                        <img src="./assets/linkedin.png" alt="Linkedin">
+                    </a>
+                </li>
+            </ul>
         </aside>
 
-        <footer>&copy; João da Silva 2018</footer>
+        <footer class="footer">&copy; João da Silva 2018</footer>
     </body>
 
 </html>
