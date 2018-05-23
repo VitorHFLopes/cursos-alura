@@ -15,6 +15,10 @@ h2 {
     font-family: 'Open Sans Condensed', 'Arial', sans-serif;
 }
 
+h1 {
+    text-transform: uppercase;
+}
+
 .titulo-principal {
     text-align: center;
     color: #FFF;
@@ -68,6 +72,11 @@ p {
     */
 }
 
+cite {
+    float: right;
+    font-style: italic;
+}
+
 .leia-mais {
     font-size: 120%;
     margin: 16px;
@@ -82,6 +91,10 @@ p {
     color: #F2FFFC;
     padding: 20px;
     text-align: center;
+    width: 15%;
+    position: absolute;
+    top: 310px;
+    right: 0;
 }
 
 aside a {
@@ -95,6 +108,7 @@ aside h1 {
 
 aside nav a {
     color: inherit;
+    text-transform: lowercase;
 }
 
 article {
@@ -107,10 +121,34 @@ article {
     display: inline-block;
 }
 
+.links-sociais a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    text-indent: -99999px;
+}
+
+.github {
+    background-image: url('./assets/github.png');
+}
+
+.twitter {
+    background-image: url('./assets/twitter.png');
+}
+
+.linkedin {
+    background-image: url('./assets/linkedin.png');
+}
+
 .footer {
     background-color: #000;
     color: #F2FFFC;
     padding: 20px;
+    clear: both;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 
 .gravata-borboleta {
@@ -141,4 +179,36 @@ strong {
 
 em {
     font-style: italic;
+}
+
+.fiat {
+    float: right;
+}
+
+.petrobras {
+    float: left;
+}
+
+.subtitulo-texto {
+    clear: both;
+}
+
+main {
+    /* float: left; */
+    width: 85%;
+    padding-bottom: 2%;
+}
+
+.minha-foto,
+.barra-navegacao {
+    /* float: right; */
+    box-sizing: border-box;
+    border-left: 10px solid #000;
+    border-bottom: 10px solid #000;
+}
+
+.minha-foto {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
