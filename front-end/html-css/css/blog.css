@@ -1,14 +1,27 @@
 .leia-mais {
-    padding: .5em;
-    margin: 1em;
-    display: block;
-    font-size: 1.5em;
-    text-align: center;
-    background-color: #E6E7E8;
+  padding: .5em;
+  margin: 1em;
+  display: block;
+  font-size: 1.5em;
+  text-align: center;
+  background-color: #e6e7e8;
 }
 
 .post-blog {
-    padding-bottom: 30px;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 20px;
+  padding-bottom: 30px;
+
+  background: linear-gradient(to right,
+  rgba(200, 200, 200, 0),
+  rgba(200, 200, 200, 1),
+  rgba(200, 200, 200, 0)) bottom center/100% 1px no-repeat;
+
+  /*background-image: radial-gradient(circle at bottom right,*/
+  /*yellow,*/
+  /*yellow 20%,*/
+  /*black 20%,*/
+  /*black 30%,*/
+  /*yellow 30%,*/
+  /*yellow);*/
+
+  margin-bottom: 20px;
 }

@@ -1,18 +1,32 @@
 .citacao-bio {
-    background-color: #D9E5E3;
-    border: .5em solid #C2CCCA;
-    padding: 1em;
-    margin: 1em 2em;
-    width: 30ch;
-    box-sizing: border-box;
+  background-color: #d9e5e3;
+  border: .5em solid #c2ccca;
+  padding: 1em;
+  margin: 1em 2em;
+  width: 30ch;
+  box-sizing: border-box;
 }
 
 .petrobras {
-    float: left;
-    margin-left: 0;
+  float: left;
+  margin-left: 0;
 }
 
 .fiat {
-    float: right;
-    margin-right: 0;
+  float: right;
+  margin-right: 0;
+}
+
+.rodape-pagina {
+  background-color: transparent;
+  background-image: radial-gradient(ellipse at left bottom,
+  rgba(60, 29, 61, 0.8),
+  rgba(60, 29, 61, 0.8) 65%,
+  black 65%,
+  black 70%,
+  transparent 70%,
+  transparent);
+  width: 100%;
+  background-size: 25% 100%;
+  background-repeat: no-repeat;
 }
