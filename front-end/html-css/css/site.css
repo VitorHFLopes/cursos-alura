@@ -3,11 +3,8 @@ body {
     background-color: #F2FFFC;
     font-size: 120%;
     line-height: 1.5;
-<<<<<<< HEAD
     display: flex;
     flex-wrap: wrap;
-=======
->>>>>>> 47eb3f34f6ecede7373464630affce1d024eba58
 }
 
 h1,
@@ -133,43 +130,23 @@ em {
 }
 
 main {
-<<<<<<< HEAD
     padding-bottom: 4em;
     flex-grow: 1;
-=======
-    width: 80%;
-    float: left;
-    padding-bottom: 4em;
->>>>>>> 47eb3f34f6ecede7373464630affce1d024eba58
 }
 
 .minha-foto,
 .navegacao-site {
     border-left: .5em solid black;
-<<<<<<< HEAD
-=======
-    border-bottom: .5em solid black;
->>>>>>> 47eb3f34f6ecede7373464630affce1d024eba58
     box-sizing: border-box;
 }
 
 .navegacao-site {
-<<<<<<< HEAD
     width: calc(0.9 * 300px);
     padding-top: calc(300px + 1em);
 }
 
 .minha-foto {
     border-bottom: .5em solid black;
-=======
-    width: 20%;
-    float: right;
-    position: relative;
-    top: 300px;
-}
-
-.minha-foto {
->>>>>>> 47eb3f34f6ecede7373464630affce1d024eba58
     position: absolute;
     top: 0;
     right: 0;
